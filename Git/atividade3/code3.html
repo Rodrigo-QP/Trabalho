@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Append Child Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .radio-group {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Append Child Example</h2>
+
+<input type="text" id="myInput" placeholder="Digite o texto do item">
+
+<div class="radio-group">
+    <input type="radio" id="cor1" name="cores" value="red">
+    <label for="cor1">Vermelho</label>
+
+    <input type="radio" id="cor2" name="cores" value="green">
+    <label for="cor2">Verde</label>
+
+    <input type="radio" id="cor3" name="cores" value="blue">
+    <label for="cor3">Azul</label>
+</div>
+
+<button id="addItemButton">Adicionar Item</button>
+
+<ul id="myList">
+    <li>Café</li>
+    <li>Chá</li>
+    <li>Leite</li>
+</ul>
+
+<script>
+    document.getElementById('addItemButton').addEventListener('click', function() {
+        // Cria um novo elemento de lista
+        var li = document.createElement("li");
+
+        // Pega o texto do input
+        var inputValue = document.getElementById("myInput").value;
+
+        // Pega a cor selecionada
+        var cor = document.querySelector('input[name="cores"]:checked');
+
+        // Se o input estiver vazio ou nenhuma cor estiver selecionada, não faça nada
+        if (!inputValue || !cor) {
+            alert("Por favor, insira um texto e selecione uma cor.");
+            return;
+        }
+
+        // Adiciona o texto e a cor ao novo elemento de lista
+        li.textContent = inputValue;
+        li.style.color = cor.value;
+
+        // Adiciona o novo item à lista
+        document.getElementById("myList").appendChild(li);
+
+        // Limpa o input
+        document.getElementById("myInput").value = "";
+    });
+</script>
+
+</body>
+</html>
